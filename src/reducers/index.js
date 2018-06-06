@@ -1,7 +1,14 @@
-const initialState = {};
+import { combineReducers } from 'redux';
 
-const reducer = (state = initialState, action) => {
-  return state;
-};
+// reducers
+import formData from './formDataReducer';
+import sendingData from './sendingDataReducer';
+import formError from './formErrorReducer';
 
-export default reducer;
+const rootReducer = combineReducers({
+    formData,
+    sendingData,
+    formError
+});
+
+export default rootReducer;

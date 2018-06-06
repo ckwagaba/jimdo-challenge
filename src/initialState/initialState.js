@@ -4,7 +4,8 @@ const initialState = {
         email: '',
         message: ''
     },
-    sendingData: false
+    sendingData: false,
+    formError: false
 };
 
 export default initialState;
