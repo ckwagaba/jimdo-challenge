@@ -2,7 +2,7 @@
 import initialState from '../initialState/initialState';
  
 // fixtures
-import { testSuccessFormDataAction, testNewFormState } from '../fixtures/form';
+import { testSuccessFormDataAction, testNewFormState } from '../fixtures/formData';
 
 // reducer
 import formData from './formDataReducer';
