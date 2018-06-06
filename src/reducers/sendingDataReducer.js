@@ -4,10 +4,13 @@ import {
     SUBMIT_FORM_DATA_START
 } from '../types';
 
-const sendingData = (state=initialState.sendingData, action) => {
+const sendingData = (state=initialState, action) => {
     switch(action.type) {
         case SUBMIT_FORM_DATA_START:
-            return !state;
+            return {
+                ...state,
+                sendingData: !state.sendingData
+            };
         default:
             return state;
     }
