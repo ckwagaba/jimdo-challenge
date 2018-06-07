@@ -25,3 +25,17 @@
     font-size: 1rem;
     font-family: inherit;
 }
+
+@media only screen and (max-width: 600px) {
+    .TextArea {
+        flex-direction: column;
+    }
+    .TextArea label {
+        width: 100%;
+        padding: .5rem 0;
+    }
+    
+    .TextArea textarea {
+        width: 100%;
+    }
+}
