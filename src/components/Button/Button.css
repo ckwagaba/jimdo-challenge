@@ -10,3 +10,7 @@
 .button:hover {
   background: none;
 }
+
+.button:active {
+  background: #FFBA5C;
+}
