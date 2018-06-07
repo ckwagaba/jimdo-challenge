@@ -6,6 +6,7 @@ import './App.css';
 import Button from '../Button/Button';
 import TextInput from '../TextInput/TextInput';
 import EmailInput from '../EmailInput/EmailInput';
+import TextArea from '../TextArea/TextArea';
 
 class App extends React.Component {
   render() {
@@ -18,6 +19,7 @@ class App extends React.Component {
           <div className="form-container-main">
             <TextInput label={'name'} placeholder={'Your full name'} />
             <EmailInput label={'email'} placeholder={'Your email address'} />
+            <TextArea label={'message'} placeholder={'Something interesting...'} />
           </div>
           <div className="form-container-footer">
             <Button label={'Submit'} />
