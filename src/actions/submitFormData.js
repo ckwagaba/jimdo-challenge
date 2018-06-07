@@ -7,11 +7,12 @@ import {
 import { testFormData } from '../fixtures/formData';
 
 /**
- * @function thunk
+ * @function async
  * dispatches action after timeout
  */
 export const submitFormData = (formData) => {
     return new Promise((dispatch) => {
+        // simulate API call
         setTimeout(() => {
             dispatch(submitFormDataSuccess(testFormData));
         }, 1000);

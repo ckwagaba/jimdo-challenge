@@ -1,5 +1,6 @@
 // action types
 import {
+    SUBMIT_FORM_DATA_REQUEST,
     SUBMIT_FORM_DATA_SUCCESS
 } from '../types';
 
@@ -10,17 +11,33 @@ export const testFormData = {
   message: 'Bringing awesomeness to Jimdo.'
 };
 
+// request action dispatched
+export const testRequestFormDataAction = {
+  type: SUBMIT_FORM_DATA_REQUEST
+};
+
 // success action dispatched
 export const testSuccessFormDataAction = {
   type: SUBMIT_FORM_DATA_SUCCESS,
   payload: testFormData
 };
 
-// new state
-export const testNewFormState = {
+// request state
+export const testRequestFormState = {
+  formData: {
+    name: '',
+    email: '',
+    message: ''
+  },
+  isLoading: true
+};
+
+// success state
+export const testSuccessFormState = {
   formData: {
     name: 'Collins Wagaba',
     email: 'ckwagaba@gmail.com',
     message: 'Bringing awesomeness to Jimdo.'
-  }
+  },
+  isLoading: false
 };

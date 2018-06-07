@@ -3,7 +3,8 @@ const initialState = {
         name: '',
         email: '',
         message: ''
-    }
+    },
+    isLoading: false
 };
 
 export default initialState;

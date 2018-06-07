@@ -2,7 +2,7 @@
 import initialState from '../initialState/initialState';
  
 // fixtures
-import { testSuccessFormDataAction, testNewFormState } from '../fixtures/formData';
+import { testSuccessFormDataAction, testSuccessFormState } from '../fixtures/formData';
 
 // reducer
 import formData from './formDataReducer';
@@ -10,6 +10,6 @@ import formData from './formDataReducer';
 describe('formDataReducer', () => {
     it('should update formData state variable', () => {
         const formState = formData(initialState, testSuccessFormDataAction);
-        expect(formState).toEqual(testNewFormState);
+        expect(formState).toEqual(testSuccessFormState);
    });
 });
