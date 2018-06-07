@@ -4,7 +4,7 @@ import {
 } from '../types';
 
 // success response data
-const testFormData = {
+export const testFormData = {
   name: 'Collins Wagaba',
   email: 'ckwagaba@gmail.com',
   message: 'Bringing awesomeness to Jimdo.'
