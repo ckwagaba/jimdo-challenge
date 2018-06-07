@@ -1,0 +1,11 @@
+.button {
+  background: #FFBA5C;
+  border: 2px solid #000;
+  font-size: 1rem;
+  padding: .7rem 2rem;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  background: none;
+}
