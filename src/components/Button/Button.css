@@ -2,7 +2,8 @@
   background: #FFBA5C;
   border: 2px solid #000;
   font-size: 1rem;
-  padding: .7rem 2rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
   text-transform: uppercase;
 }
 
