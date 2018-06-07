@@ -12,6 +12,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <div className="background-overlay"></div>
         <div className="form-container">
           <div className="form-container-header">
             {'Introduction'}
