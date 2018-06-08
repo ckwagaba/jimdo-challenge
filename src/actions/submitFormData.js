@@ -3,19 +3,16 @@ import {
     SUBMIT_FORM_DATA_SUCCESS
 } from '../types';
 
-// fixtures
-import { testFormData } from '../fixtures/formData';
-
 /**
  * @function async
  * dispatches action after timeout
  */
 export const submitFormData = (formData) => {
-    return new Promise((dispatch) => {
+    return new Promise((resolve) => {
         // simulate API call
         setTimeout(() => {
-            dispatch(submitFormDataSuccess(testFormData));
-        }, 1000);
+            resolve(submitFormDataSuccess(formData));
+        }, 3000);
     });
 };
 

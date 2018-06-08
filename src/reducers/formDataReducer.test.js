@@ -9,7 +9,7 @@ import formData from './formDataReducer';
 
 describe('formDataReducer', () => {
     it('should update formData state variable', () => {
-        const formState = formData(initialState, testSuccessFormDataAction);
-        expect(formState).toEqual(testSuccessFormState);
+        const formDataState = formData(initialState, testSuccessFormDataAction);
+        expect(formDataState).toEqual(testSuccessFormState);
    });
 });

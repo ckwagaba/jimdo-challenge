@@ -4,13 +4,10 @@ import {
     SUBMIT_FORM_DATA_SUCCESS
 } from '../types';
 
-const formData = (state=initialState, action) => {
+const formData = (state=initialState.formData, action) => {
     switch(action.type) {
         case SUBMIT_FORM_DATA_SUCCESS:
-            return {
-                formData: action.payload,
-                isLoading: false
-            };
+            return action.payload;
         default:
             return state;
     }

@@ -19,7 +19,6 @@ describe('submitFormData action', () => {
     it('should dispatch SUBMIT_FORM_DATA_SUCCESS action after a successful timeout', async () => {
         const store = mockStore({});
         const action = await submitFormData(testFormData);
-        
         store.dispatch(action);
         expect(store.getActions()[0]).toEqual(testSuccessFormDataAction);
     });

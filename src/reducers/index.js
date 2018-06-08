@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 // reducers
 import formData from './formDataReducer';
-import isLoading from './isLoadingReducer';
+import isLoading from './submitFormDataReducer';
 
 const rootReducer = combineReducers({
     formData,

@@ -4,13 +4,10 @@ import {
     SUBMIT_FORM_DATA_REQUEST
 } from '../types';
 
-const isLoading = (state=initialState, action) => {
+const isLoading = (state=initialState.isLoading, action) => {
     switch(action.type) {
         case SUBMIT_FORM_DATA_REQUEST:
-            return {
-                ...state,
-                isLoading: true
-            };
+            return !state;
         default:
             return state;
     }

@@ -22,22 +22,9 @@ export const testSuccessFormDataAction = {
   payload: testFormData
 };
 
-// request state
-export const testRequestFormState = {
-  formData: {
-    name: '',
-    email: '',
-    message: ''
-  },
-  isLoading: true
-};
-
 // success state
 export const testSuccessFormState = {
-  formData: {
-    name: 'Collins Wagaba',
-    email: 'ckwagaba@gmail.com',
-    message: 'Bringing awesomeness to Jimdo.'
-  },
-  isLoading: false
+  name: 'Collins Wagaba',
+  email: 'ckwagaba@gmail.com',
+  message: 'Bringing awesomeness to Jimdo.'
 };
