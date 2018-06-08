@@ -4,33 +4,16 @@ import { connect } from 'react-redux';
 import './TextInput.css';
 
 class TextInput extends Component {
-    constructor(props) {
-        super(props);
-        
-        this.state = {
-            name: ''
-        };
-    }
-    
-    /**
-     * @method
-     * handle change of input
-     */
-    handleOnChange = (event) => {
-        this.setState({
-          name: event.target.value
-        });
-    }
-    
     render() {
         return (
             <div className="TextInput">
                 <label>{this.props.label}</label>
                 <input
                     type="text"
+                    name={'name'}
                     placeholder={this.props.placeholder}
-                    value={this.state.name}
-                    onChange={this.handleOnChange}
+                    value={this.props.value}
+                    onChange={this.props.handleOnChange}
                     disabled={this.props.isLoading}
                 />
             </div>
