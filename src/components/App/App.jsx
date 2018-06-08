@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 // actions
 import submitFormDataRequest from '../../actions/submitFormDataRequest';
@@ -83,13 +84,18 @@ class App extends Component {
             />
           </div>
           <div className="form-container-footer">
-            <Button label={'Submit'} handleFormSubmission={this.handleFormSubmission} />
+            <Button handleFormSubmission={this.handleFormSubmission} />
           </div>
         </div>
       </div>
     );
   }
 }
+
+App.propTypes = {
+  submitFormDataRequest: PropTypes.func,
+  submitFormData: PropTypes.func
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {

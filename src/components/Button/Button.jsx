@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import './Button.css';
 
@@ -21,6 +22,11 @@ class Button extends Component {
     );
   }
 }
+
+Button.propTypes = {
+  isLoading: PropTypes.bool,
+  handleFormSubmission: PropTypes.func
+};
 
 const mapStateToProps = (state) => {
   return {

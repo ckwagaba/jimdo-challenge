@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import './EmailInput.css';
 
@@ -20,6 +21,14 @@ class EmailInput extends Component {
         );
     }
 }
+
+EmailInput.propTypes = {
+  label: PropTypes.string,
+  placeholder: PropTypes.string,
+  value: PropTypes.string,
+  handleOnChange: PropTypes.func,
+  isLoading: PropTypes.bool
+};
 
 const mapStateToProps = (state) => {
   return {
