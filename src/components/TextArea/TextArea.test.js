@@ -3,8 +3,8 @@ import { shallow } from 'enzyme';
 
 import store from '../../store/store';
 
-import App from './App';
+import TextArea from './TextArea';
 
 it('renders without crashing', () => {
-  shallow(<App store={store} />);
+  shallow(<TextArea store={store} />);
 });

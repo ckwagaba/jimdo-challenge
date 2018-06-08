@@ -1,10 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import store from '../../store/store';
-
-import App from './App';
+import Loader from './Loader';
 
 it('renders without crashing', () => {
-  shallow(<App store={store} />);
+  shallow(<Loader />);
 });
