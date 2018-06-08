@@ -24,7 +24,5 @@ export const testSuccessFormDataAction = {
 
 // success state
 export const testSuccessFormState = {
-  name: 'Collins Wagaba',
-  email: 'ckwagaba@gmail.com',
-  message: 'Bringing awesomeness to Jimdo.'
+  ...testFormData
 };

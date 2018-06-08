@@ -31,12 +31,12 @@ class App extends Component {
    * handle change of input
    */
   handleOnChange = (event) => {
-      this.setState({
-        formData: {
-          ...this.state.formData,
-          [event.target.name]: event.target.value
-        }
-      });
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        [event.target.name]: event.target.value
+      }
+    });
   }
   
   /**
@@ -45,9 +45,11 @@ class App extends Component {
    * also calls necessary actions
    */
   handleFormSubmission = () => {
+    // makes form elements inactive when sending data
     this.props.submitFormDataRequest();
+    
     this.props.submitFormData(this.state.formData).then(() => {
-      console.log('sent')
+      // makes form elements active again
       this.props.submitFormDataRequest();
     });
   }
@@ -90,15 +92,15 @@ class App extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        submitFormDataRequest: () => {
-          dispatch(submitFormDataRequest());
-        },
-        submitFormData: async (payload) => {
-          const action = await submitFormData(payload);
-          dispatch(action);
-        }
-    };
+  return {
+    submitFormDataRequest: () => {
+      dispatch(submitFormDataRequest());
+    },
+    submitFormData: async (payload) => {
+      const action = await submitFormData(payload);
+      dispatch(action);
+    }
+  };
 };
 
 export default connect(null, mapDispatchToProps)(App);
