@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import './EmailInput.css';
 
 class EmailInput extends Component {
@@ -29,10 +31,17 @@ class EmailInput extends Component {
                     placeholder={this.props.placeholder}
                     value={this.state.email}
                     onChange={this.handleOnChange}
+                    disabled={this.props.isLoading}
                 />
             </div>
         );
     }
 }
 
-export default EmailInput;
+const mapStateToProps = (state) => {
+  return {
+    isLoading: state.isLoading
+  };
+};
+
+export default connect(mapStateToProps)(EmailInput);

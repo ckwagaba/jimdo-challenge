@@ -7,6 +7,9 @@ import './Button.css';
 import submitFormDataRequest from '../../actions/submitFormDataRequest';
 import submitFormData from '../../actions/submitFormData';
 
+// components
+import Loader from '../Loader/Loader';
+
 // fixtures
 import { testFormData } from '../../fixtures/formData';
 
@@ -26,8 +29,14 @@ class Button extends Component {
     
     render() {
       return (
-        <button className="button" onClick={this.handleFormSubmission}>
-          {this.props.label}
+        <button
+           className="button"
+           onClick={this.handleFormSubmission}
+           disabled={this.props.isLoading}
+        >
+          {
+            this.props.isLoading ? <Loader /> : 'submit'
+          }
         </button>
       );
     }
@@ -35,7 +44,6 @@ class Button extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    formData: state.formData,
     isLoading: state.isLoading
   };
 };

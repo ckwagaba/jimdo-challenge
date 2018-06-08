@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import './TextArea.css';
 
 class TextArea extends Component {
@@ -28,10 +30,17 @@ class TextArea extends Component {
                     placeholder={this.props.placeholder}
                     value={this.state.message}
                     onChange={this.handleOnChange}
+                    disabled={this.props.isLoading}
                 ></textarea>
             </div>
         );
     }
 }
 
-export default TextArea;
+const mapStateToProps = (state) => {
+  return {
+    isLoading: state.isLoading
+  };
+};
+
+export default connect(mapStateToProps)(TextArea);

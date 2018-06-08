@@ -23,7 +23,6 @@ class TextInput extends Component {
     }
     
     render() {
-        console.log(this.props.isLoading);
         return (
             <div className="TextInput">
                 <label>{this.props.label}</label>
@@ -32,6 +31,7 @@ class TextInput extends Component {
                     placeholder={this.props.placeholder}
                     value={this.state.name}
                     onChange={this.handleOnChange}
+                    disabled={this.props.isLoading}
                 />
             </div>
         );
