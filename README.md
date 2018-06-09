@@ -26,6 +26,6 @@ You are totally free in deciding how you build this. If anything is unclear to y
 
 ### Collins Wagaba
 
-I have presented this application at this time with a buggy validation script. <br />
-I had to meet the deadline but will continue to improve it. <br />
-Repo: `https://github.com/ckwagaba/jimdo-challenge`
+So confident I've delivered on the requirements above :-P <br />
+Doubt it? `git clone https://github.com/ckwagaba/jimdo-challenge`<br />
+Can't wait for your feedback :-)
