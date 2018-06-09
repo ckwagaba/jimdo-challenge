@@ -26,6 +26,14 @@
     font-family: inherit;
 }
 
+.false textarea {
+    border: 1px solid #F00;
+}
+
+.true textarea {
+    border: 1px solid #0C0;
+}
+
 @media only screen and (max-width: 600px) {
     .TextArea {
         flex-direction: column;

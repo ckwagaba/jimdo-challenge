@@ -7,7 +7,7 @@ import './EmailInput.css';
 class EmailInput extends Component {
     render() {
         return (
-            <div className="EmailInput">
+            <div className={`EmailInput ${this.props.isValid}`}>
                 <label>{this.props.label}</label>
                 <input
                     type="email"
@@ -28,7 +28,8 @@ EmailInput.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
   handleOnChange: PropTypes.func,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  isValid: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {

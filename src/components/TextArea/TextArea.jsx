@@ -6,9 +6,8 @@ import './TextArea.css';
 
 class TextArea extends Component {
     render() {
-        console.log(this.props.isValid);
         return (
-            <div className="TextArea">
+            <div className={`TextArea ${this.props.isValid}`}>
                 <label>{this.props.label}</label>
                 <textarea
                     name={'message'}
@@ -28,7 +27,8 @@ TextArea.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
   handleOnChange: PropTypes.func,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  isValid: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {

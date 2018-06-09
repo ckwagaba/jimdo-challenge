@@ -24,10 +24,9 @@ class App extends Component {
         email: '',
         message: ''
       },
-      isValidName: false,
-      isValidEmail: false,
-      isValidMessage: false,
-      formValid: false
+      isValidName: null,
+      isValidEmail: null,
+      isValidMessage: null
     };
   }
   
@@ -49,41 +48,6 @@ class App extends Component {
    * validate form onBlur of any of the fields
    */
   validateInput = (event) => {
-    // check which field caused the blur
-    const inputName = event.target.name;
-    
-    // and update its value
-    switch(inputName) {
-      case 'name':
-        this.setState({
-          formData: {
-            ...this.state.formData,
-            name: event.target.value
-          }
-        });
-        break
-      
-      case 'email':
-        this.setState({
-          formData: {
-            ...this.state.formData,
-            email: event.target.value
-          }
-        });
-        break
-      
-      case 'message':
-        this.setState({
-          formData: {
-            ...this.state.formData,
-            message: event.target.value
-          }
-        });
-        break
-      default:
-        return;
-    }
-    
     // check validity of name field
     const isValidName = () => {
       const nameRegExp = /^[a-zA-Z ]{2,30}$/;
@@ -118,13 +82,10 @@ class App extends Component {
       return testMessage;
     };
     
-    // check all fields for validity
-    const formValidity = isValidName() && isValidEmail() && isValidMessage();
-    
-    // and update state with value
-    this.setState({
-      formValid: formValidity
-    });
+    // validate all fields
+    isValidName();
+    isValidEmail();
+    isValidMessage();
   }
   
   /**
@@ -134,7 +95,7 @@ class App extends Component {
    */
   handleFormSubmission = () => {
     // validate first
-    if(this.state.formValid) {
+    if(this.state.isValidName && this.state.isValidEmail && this.state.isValidMessage) {
       // makes form elements inactive when sending data
       this.props.submitFormDataRequest();
       
@@ -142,11 +103,14 @@ class App extends Component {
         // makes form elements active again
         this.props.submitFormDataRequest();
       });
+    } else {
+      // style invalid fields accordingly
+      this.validateInput();
     }
   }
   
   render() {
-    console.log(this.state); //
+    console.log(this.state);
     return (
       <div className="App">
         <div className="background-overlay"></div>

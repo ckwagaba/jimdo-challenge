@@ -7,7 +7,7 @@ import './TextInput.css';
 class TextInput extends Component {
     render() {
         return (
-            <div className="TextInput">
+            <div className={`TextInput ${this.props.isValid}`}>
                 <label>{this.props.label}</label>
                 <input
                     type="text"
@@ -29,7 +29,8 @@ TextInput.propTypes = {
   value: PropTypes.string,
   handleOnChange: PropTypes.func,
   validateInput: PropTypes.func,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  isValid: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {

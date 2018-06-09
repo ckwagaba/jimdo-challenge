@@ -24,6 +24,14 @@
     font-family: inherit;
 }
 
+.false input {
+    border: 1px solid #F00;
+}
+
+.true input {
+    border: 1px solid #0C0;
+}
+
 @media only screen and (max-width: 600px) {
     .EmailInput {
         flex-direction: column;
