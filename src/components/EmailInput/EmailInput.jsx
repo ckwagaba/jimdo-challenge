@@ -15,6 +15,7 @@ class EmailInput extends Component {
                     placeholder={this.props.placeholder}
                     value={this.props.value}
                     onChange={this.props.handleOnChange}
+                    onBlur={this.props.validateInput}
                     disabled={this.props.isLoading}
                 />
             </div>

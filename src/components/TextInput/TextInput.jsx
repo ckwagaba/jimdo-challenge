@@ -15,6 +15,7 @@ class TextInput extends Component {
                     placeholder={this.props.placeholder}
                     value={this.props.value}
                     onChange={this.props.handleOnChange}
+                    onBlur={this.props.validateInput}
                     disabled={this.props.isLoading}
                 />
             </div>
@@ -27,6 +28,7 @@ TextInput.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
   handleOnChange: PropTypes.func,
+  validateInput: PropTypes.func,
   isLoading: PropTypes.bool
 };
 

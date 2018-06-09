@@ -6,6 +6,7 @@ import './TextArea.css';
 
 class TextArea extends Component {
     render() {
+        console.log(this.props.isValid);
         return (
             <div className="TextArea">
                 <label>{this.props.label}</label>
@@ -14,6 +15,7 @@ class TextArea extends Component {
                     placeholder={this.props.placeholder}
                     value={this.props.value}
                     onChange={this.props.handleOnChange}
+                    onBlur={this.props.validateInput}
                     disabled={this.props.isLoading}
                 ></textarea>
             </div>
