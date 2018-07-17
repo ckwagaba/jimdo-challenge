@@ -17,7 +17,7 @@ import TextArea from '../TextArea/TextArea';
 class App extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       formData: {
         name: '',
@@ -29,7 +29,7 @@ class App extends Component {
       isValidMessage: null
     };
   }
-  
+
   /**
    * @method
    * handle change of input
@@ -42,7 +42,7 @@ class App extends Component {
       }
     });
   }
-  
+
   /**
    * @method
    * validate form onBlur of any of the fields
@@ -56,21 +56,20 @@ class App extends Component {
       this.setState({
         isValidName: testName
       });
-      return testName;
     };
-    
+
     // check validity of email field
     const isValidEmail = () => {
       // found this RegExp online
+      // eslint-disable-next-line
       const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       const testEmail = emailRegExp.test((this.state.formData.email).trim());
       // update state: shall be sent down as prop to this field for appropriate styling
       this.setState({
         isValidEmail: testEmail
       });
-      return testEmail;
     };
-    
+
     // check validity of message field
     const isValidMessage = () => {
       // only condition is to have something
@@ -79,15 +78,14 @@ class App extends Component {
       this.setState({
         isValidMessage: testMessage
       });
-      return testMessage;
     };
-    
+
     // validate all fields
     isValidName();
     isValidEmail();
     isValidMessage();
   }
-  
+
   /**
    * @method
    * event handler for submit button click
@@ -98,7 +96,7 @@ class App extends Component {
     if(this.state.isValidName && this.state.isValidEmail && this.state.isValidMessage) {
       // makes form elements inactive when sending data
       this.props.submitFormDataRequest();
-      
+
       this.props.submitFormData(this.state.formData).then(() => {
         // makes form elements active again
         this.props.submitFormDataRequest();
@@ -108,7 +106,7 @@ class App extends Component {
       this.validateInput();
     }
   }
-  
+
   render() {
     console.log(this.state);
     return (
