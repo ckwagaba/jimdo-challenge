@@ -91,16 +91,14 @@ class App extends Component {
    * event handler for submit button click
    * also calls necessary actions
    */
-  handleFormSubmission = () => {
+  handleFormSubmission = async () => {
     // validate first
     if(this.state.isValidName && this.state.isValidEmail && this.state.isValidMessage) {
       // makes form elements inactive when sending data
       this.props.submitFormDataRequest();
-
-      this.props.submitFormData(this.state.formData).then(() => {
-        // makes form elements active again
-        this.props.submitFormDataRequest();
-      });
+      // send data
+      await this.props.submitFormData(this.state.formData);
+      this.props.submitFormDataRequest();
     } else {
       // style invalid fields accordingly
       this.validateInput();
