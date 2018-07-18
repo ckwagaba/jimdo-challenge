@@ -1,26 +1,23 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import './TextArea.css';
 
-class TextArea extends Component {
-    render() {
-        return (
-            <div className={`TextArea ${this.props.isValid}`}>
-                <label>{this.props.label}</label>
-                <textarea
-                    name={'message'}
-                    placeholder={this.props.placeholder}
-                    value={this.props.value}
-                    onChange={this.props.handleOnChange}
-                    onBlur={this.props.validateInput}
-                    disabled={this.props.isLoading}
-                ></textarea>
-            </div>
-        );
-    }
-}
+const TextArea = (props) => {
+  return (
+      <div className={`TextArea ${props.isValid}`}>
+          <label>{props.label}</label>
+          <textarea
+              name={'message'}
+              placeholder={props.placeholder}
+              value={props.value}
+              onChange={props.handleOnChange}
+              onBlur={props.validateInput}
+              disabled={props.isLoading}
+          ></textarea>
+      </div>
+  );
+};
 
 TextArea.propTypes = {
   label: PropTypes.string,
@@ -31,10 +28,4 @@ TextArea.propTypes = {
   isValid: PropTypes.bool
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isLoading: state.isLoading
-  };
-};
-
-export default connect(mapStateToProps)(TextArea);
+export default TextArea;

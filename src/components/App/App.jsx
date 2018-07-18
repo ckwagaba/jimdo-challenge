@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 // actions
-import submitFormDataRequest from '../../actions/submitFormDataRequest';
 import submitFormData from '../../actions/submitFormData';
 
 import './App.css';
@@ -17,13 +16,13 @@ import TextArea from '../TextArea/TextArea';
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       formData: {
         name: '',
         email: '',
         message: ''
       },
+      isLoading: false,
       isValidName: null,
       isValidEmail: null,
       isValidMessage: null
@@ -40,6 +39,16 @@ class App extends Component {
         ...this.state.formData,
         [event.target.name]: event.target.value
       }
+    });
+  }
+
+  /**
+   * @method
+   * toggle isLoading
+  */
+  toggleIsLoading = () => {
+    this.setState({
+      isLoading: !this.state.isLoading
     });
   }
 
@@ -95,10 +104,10 @@ class App extends Component {
     // validate first
     if(this.state.isValidName && this.state.isValidEmail && this.state.isValidMessage) {
       // makes form elements inactive when sending data
-      this.props.submitFormDataRequest();
+      this.toggleIsLoading();
       // send data
       await this.props.submitFormData(this.state.formData);
-      this.props.submitFormDataRequest();
+      this.toggleIsLoading();
     } else {
       // style invalid fields accordingly
       this.validateInput();
@@ -122,6 +131,7 @@ class App extends Component {
               handleOnChange={this.handleOnChange}
               validateInput={this.validateInput}
               isValid={this.state.isValidName}
+              isLoading={this.state.isLoading}
             />
             <EmailInput
               label={'email'}
@@ -130,6 +140,7 @@ class App extends Component {
               handleOnChange={this.handleOnChange}
               validateInput={this.validateInput}
               isValid={this.state.isValidEmail}
+              isLoading={this.state.isLoading}
             />
             <TextArea
               label={'message'}
@@ -138,10 +149,14 @@ class App extends Component {
               handleOnChange={this.handleOnChange}
               validateInput={this.validateInput}
               isValid={this.state.isValidMessage}
+              isLoading={this.state.isLoading}
             />
           </div>
           <div className="form-container-footer">
-            <Button handleFormSubmission={this.handleFormSubmission} />
+            <Button
+              handleFormSubmission={this.handleFormSubmission}
+              isLoading={this.state.isLoading}
+            />
           </div>
         </div>
       </div>
@@ -150,15 +165,11 @@ class App extends Component {
 }
 
 App.propTypes = {
-  submitFormDataRequest: PropTypes.func,
   submitFormData: PropTypes.func
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    submitFormDataRequest: () => {
-      dispatch(submitFormDataRequest());
-    },
     submitFormData: async (payload) => {
       const action = await submitFormData(payload);
       dispatch(action);

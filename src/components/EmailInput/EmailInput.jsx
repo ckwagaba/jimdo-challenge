@@ -1,27 +1,24 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import './EmailInput.css';
 
-class EmailInput extends Component {
-    render() {
-        return (
-            <div className={`EmailInput ${this.props.isValid}`}>
-                <label>{this.props.label}</label>
-                <input
-                    type="email"
-                    name={'email'}
-                    placeholder={this.props.placeholder}
-                    value={this.props.value}
-                    onChange={this.props.handleOnChange}
-                    onBlur={this.props.validateInput}
-                    disabled={this.props.isLoading}
-                />
-            </div>
-        );
-    }
-}
+const EmailInput = (props) => {
+  return (
+      <div className={`EmailInput ${props.isValid}`}>
+          <label>{props.label}</label>
+          <input
+              type="email"
+              name={'email'}
+              placeholder={props.placeholder}
+              value={props.value}
+              onChange={props.handleOnChange}
+              onBlur={props.validateInput}
+              disabled={props.isLoading}
+          />
+      </div>
+  );
+};
 
 EmailInput.propTypes = {
   label: PropTypes.string,
@@ -32,10 +29,4 @@ EmailInput.propTypes = {
   isValid: PropTypes.bool
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isLoading: state.isLoading
-  };
-};
-
-export default connect(mapStateToProps)(EmailInput);
+export default EmailInput;
