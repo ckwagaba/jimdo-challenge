@@ -54,45 +54,43 @@ class App extends Component {
 
   /**
    * @method
-   * validate form onBlur of any of the fields
+   * check validity of name field on blur
    */
-  validateInput = (event) => {
-    // check validity of name field
-    const isValidName = () => {
-      const nameRegExp = /^[a-zA-Z ]{2,30}$/;
-      const testName = nameRegExp.test((this.state.formData.name).trim());
-      // update state: shall be sent down as prop to this field for appropriate styling
-      this.setState({
-        isValidName: testName
-      });
-    };
+  validateName = (event) => {
+    const nameRegExp = /^[a-zA-Z ]{2,30}$/;
+    const testName = nameRegExp.test((this.state.formData.name).trim());
+    // update state: shall be sent down as prop to this field for appropriate styling
+    this.setState({
+      isValidName: testName
+    });
+  }
 
-    // check validity of email field
-    const isValidEmail = () => {
-      // found this RegExp online
-      // eslint-disable-next-line
-      const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      const testEmail = emailRegExp.test((this.state.formData.email).trim());
-      // update state: shall be sent down as prop to this field for appropriate styling
-      this.setState({
-        isValidEmail: testEmail
-      });
-    };
+  /**
+   * @method
+   * check validity of email field on blur
+   */
+  validateEmail = (event) => {
+    // found this RegExp online
+    // eslint-disable-next-line
+    const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const testEmail = emailRegExp.test((this.state.formData.email).trim());
+    // update state: shall be sent down as prop to this field for appropriate styling
+    this.setState({
+      isValidEmail: testEmail
+    });
+  }
 
-    // check validity of message field
-    const isValidMessage = () => {
-      // only condition is to have something
-      const testMessage = !!(this.state.formData.message).trim();
-      // update state: shall be sent down as prop to this field for appropriate styling
-      this.setState({
-        isValidMessage: testMessage
-      });
-    };
-
-    // validate all fields
-    isValidName();
-    isValidEmail();
-    isValidMessage();
+  /**
+   * @method
+   * check validity of message field on blur
+   */
+  validateMessage = (event) => {
+    // only condition is to have something
+    const testMessage = !!(this.state.formData.message).trim();
+    // update state: shall be sent down as prop to this field for appropriate styling
+    this.setState({
+      isValidMessage: testMessage
+    });
   }
 
   /**
@@ -101,7 +99,7 @@ class App extends Component {
    * also calls necessary actions
    */
   handleFormSubmission = async () => {
-    // validate first
+    // first check validity of form fields
     if(this.state.isValidName && this.state.isValidEmail && this.state.isValidMessage) {
       // makes form elements inactive when sending data
       this.toggleIsLoading();
@@ -109,8 +107,10 @@ class App extends Component {
       await this.props.submitFormData(this.state.formData);
       this.toggleIsLoading();
     } else {
-      // style invalid fields accordingly
-      this.validateInput();
+      // validate input and style invalid fields accordingly
+      this.validateName();
+      this.validateEmail();
+      this.validateMessage();
     }
   }
 
@@ -129,7 +129,7 @@ class App extends Component {
               placeholder={'Your full name'}
               value={this.state.formData.name}
               handleOnChange={this.handleOnChange}
-              validateInput={this.validateInput}
+              validateInput={this.validateName}
               isValid={this.state.isValidName}
               isLoading={this.state.isLoading}
             />
@@ -138,7 +138,7 @@ class App extends Component {
               placeholder={'Your email address'}
               value={this.state.formData.email}
               handleOnChange={this.handleOnChange}
-              validateInput={this.validateInput}
+              validateInput={this.validateEmail}
               isValid={this.state.isValidEmail}
               isLoading={this.state.isLoading}
             />
@@ -147,7 +147,7 @@ class App extends Component {
               placeholder={'Something interesting...'}
               value={this.state.formData.message}
               handleOnChange={this.handleOnChange}
-              validateInput={this.validateInput}
+              validateInput={this.validateMessage}
               isValid={this.state.isValidMessage}
               isLoading={this.state.isLoading}
             />
