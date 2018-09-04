@@ -62,6 +62,7 @@ class App extends Component {
     // check validity of email field
     const isValidEmail = () => {
       // found this RegExp online
+      // eslint-disable-next-line
       const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       const testEmail = emailRegExp.test((this.state.formData.email).trim());
       // update state: shall be sent down as prop to this field for appropriate styling
