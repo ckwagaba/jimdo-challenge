@@ -1,27 +1,24 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import './TextInput.css';
 
-class TextInput extends Component {
-    render() {
-        return (
-            <div className={`TextInput ${this.props.isValid}`}>
-                <label>{this.props.label}</label>
-                <input
-                    type="text"
-                    name={'name'}
-                    placeholder={this.props.placeholder}
-                    value={this.props.value}
-                    onChange={this.props.handleOnChange}
-                    onBlur={this.props.validateInput}
-                    disabled={this.props.isLoading}
-                />
-            </div>
-        );
-    }
-}
+const TextInput = (props) => {
+  return (
+      <div className={`TextInput ${props.isValid}`}>
+          <label>{props.label}</label>
+          <input
+              type="text"
+              name={'name'}
+              placeholder={props.placeholder}
+              value={props.value}
+              onChange={props.handleOnChange}
+              onBlur={props.validateInput}
+              disabled={props.isLoading}
+          />
+      </div>
+  );
+};
 
 TextInput.propTypes = {
   label: PropTypes.string,
@@ -33,10 +30,4 @@ TextInput.propTypes = {
   isValid: PropTypes.bool
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isLoading: state.isLoading
-  };
-};
-
-export default connect(mapStateToProps)(TextInput);
+export default TextInput;
