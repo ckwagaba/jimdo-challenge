@@ -10,7 +10,7 @@ import {
 import { testFormData, testSuccessFormDataAction } from '../fixtures/formData';
 
 // actions
-import { submitFormData } from './submitFormData';
+import submitFormData from './submitFormData';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

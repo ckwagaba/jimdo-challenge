@@ -9,7 +9,7 @@ import Loader from '../Loader/Loader';
 const Button = (props) => {
   return (
     <button
-       className="button"
+       className={'button'}
        onClick={props.handleFormSubmission}
        disabled={props.isLoading}
     >

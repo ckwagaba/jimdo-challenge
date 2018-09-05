@@ -7,7 +7,7 @@ import {
  * @function async
  * dispatches action after timeout
  */
-export const submitFormData = (formData) => {
+const submitFormData = (formData) => {
     return new Promise((resolve) => {
         // simulate API call
         setTimeout(() => {

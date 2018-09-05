@@ -8,7 +8,7 @@ const TextInput = (props) => {
       <div className={`TextInput ${props.isValid}`}>
           <label>{props.label}</label>
           <input
-              type="text"
+              type={'text'}
               name={'name'}
               placeholder={props.placeholder}
               value={props.value}

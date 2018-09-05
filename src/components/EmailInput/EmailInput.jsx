@@ -8,7 +8,7 @@ const EmailInput = (props) => {
       <div className={`EmailInput ${props.isValid}`}>
           <label>{props.label}</label>
           <input
-              type="email"
+              type={'email'}
               name={'email'}
               placeholder={props.placeholder}
               value={props.value}
