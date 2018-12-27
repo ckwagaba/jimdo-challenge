@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 // actions
 import submitFormData from '../../actions/submitFormData';
 
+// stylesheets
 import './App.css';
 
+// images
+import imagePlaceholder from '../../assets/images/image-placeholder.png';
+
 // components
+import Avatar from '../Avatar/Avatar';
 import Button from '../Button/Button';
 import TextInput from '../TextInput/TextInput';
 import EmailInput from '../EmailInput/EmailInput';
@@ -20,13 +25,16 @@ class App extends Component {
       formData: {
         name: '',
         email: '',
+        avatar: imagePlaceholder,
         message: ''
       },
       isLoading: false,
       isValidName: null,
       isValidEmail: null,
+      isValidAvatar: null,
       isValidMessage: null
     };
+    this.fileInputRef = createRef();
   }
 
   /**
@@ -40,6 +48,66 @@ class App extends Component {
         [event.target.name]: event.target.value
       }
     });
+  }
+  
+  /**
+   * @method
+   * handle click event of the file uploader
+   * invokes click on the hidden file input element using React Refs
+   */
+  handleOnClick = (event) => {
+    this.fileInputRef.current.click();
+  }
+  
+  /**
+   * @method
+   * handle change event of file input element
+   */
+  handleFileInputOnChange = (event) => {
+    // process image and read it using the file reader API
+    // update avatar state avariable
+    var file = event.target.files[0];
+    if (file) {
+      console.log(file);
+      // validate file - should be image
+      // validate input kwanza
+      // we want .jpg, .png, .gif (maybe not gifs)
+      // regex from MDN
+      if (/\.(jpe?g|png)$/i.test(file.name)) {
+        // this test: file.type.match('images/*') - passes for Adobe Illustrator files
+        // so we use the regex above
+        // turns out .ai is recognized as image/svg+xml
+        // file reader object
+        let reader = new FileReader();
+        // read contents of file
+        reader.readAsDataURL(file);
+        // when succesfully read
+        reader.onload = (e) => {
+          // update state
+          // console.log(reader.result);
+          // console.log(e.target.result);
+          // e.target === reader
+          // update state
+          this.setState({
+            formData: {
+              ...this.state.formData,
+              avatar: e.target.result
+            }
+          });
+          // then validate
+          this.validateAvatar();
+        };
+      } else {
+        // some validation is handled here
+        this.setState({
+          formData: {
+            ...this.state.formData,
+            avatar: imagePlaceholder
+          },
+          isValidAvatar: false
+        });
+      }
+    }
   }
 
   /**
@@ -79,6 +147,28 @@ class App extends Component {
       isValidEmail: testEmail
     });
   }
+  
+  /**
+   * @method
+   * check validity of avatar on blur
+   */
+  validateAvatar = () => {
+    console.log('validating...');
+    const avatar = this.state.formData.avatar;
+    console.log(avatar);
+    if (/^data:image\//i.test(avatar)) {
+      // should not be default image
+      // expecting a base64 encoded Data URL
+      this.setState({
+        isValidAvatar: true
+      });
+    } else {
+      // throw
+      this.setState({
+        isValidAvatar: false
+      });
+    }
+  }
 
   /**
    * @method
@@ -100,7 +190,7 @@ class App extends Component {
    */
   handleFormSubmission = async () => {
     // first check validity of form fields
-    if(this.state.isValidName && this.state.isValidEmail && this.state.isValidMessage) {
+    if(this.state.isValidName && this.state.isValidEmail && this.state.isValidAvatar && this.state.isValidMessage) {
       // makes form elements inactive when sending data
       this.toggleIsLoading();
       // send data
@@ -110,6 +200,7 @@ class App extends Component {
       // validate input and style invalid fields accordingly
       this.validateName();
       this.validateEmail();
+      this.validateAvatar();
       this.validateMessage();
     }
   }
@@ -140,6 +231,16 @@ class App extends Component {
               handleOnChange={this.handleOnChange}
               validateInput={this.validateEmail}
               isValid={this.state.isValidEmail}
+              isLoading={this.state.isLoading}
+            />
+            <Avatar
+              label={'avatar'}
+              url={this.state.formData.avatar}
+              alt={'Avatar'}
+              fileInputRef={this.fileInputRef}
+              handleOnChange={this.handleFileInputOnChange}
+              handleOnClick={this.handleOnClick}
+              isValid={this.state.isValidAvatar}
               isLoading={this.state.isLoading}
             />
             <TextArea

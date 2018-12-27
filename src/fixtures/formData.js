@@ -5,7 +5,7 @@ import {
 
 // success response data
 export const testFormData = {
-  name: 'Collins Wagaba',
+  name: 'Colin Wagaba',
   email: 'ckwagaba@gmail.com',
   message: 'Bringing awesomeness to Jimdo.'
 };
