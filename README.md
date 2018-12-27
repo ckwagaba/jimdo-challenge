@@ -24,7 +24,7 @@ You are totally free in deciding how you build this. If anything is unclear to y
 
 ## Documentation
 
-### Collins Wagaba
+### Colin Wagaba
 
 So confident I've delivered on the requirements above :-P <br />
 Doubt it? `git clone https://github.com/ckwagaba/jimdo-challenge`<br />
